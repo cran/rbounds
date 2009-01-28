@@ -4,17 +4,19 @@ psens <- function(x,y=NULL, Gamma=6, GammaInc=1){
   if (is.numeric(x)){
   trt <- x
   ctrl <- y
-  }
-     else {
-        ctrl <- Y[x$index.control]
-        trt <- Y[x$index.treated]
-      }
+  } else if(x$est > 0){
+  ctrl <- Y[x$index.control]
+  trt <- Y[x$index.treated]
+	} else {
+	ctrl <- Y[x$index.treated]
+    trt <- Y[x$index.control]	
+		}
 
   gamma <- seq(1, Gamma, by=GammaInc)
   m <- length(gamma)
   S <- length(ctrl)
   pvals <- matrix(NA, m, 2)
-  diff <-trt - ctrl
+  diff <- trt - ctrl
   ranks <- rank(abs(diff), ties.method="average")
   psi <- as.numeric(diff > 0)
   T <- sum(psi * ranks)

@@ -1,8 +1,8 @@
 Package: rbounds
 Type: Package
 Title: Perform Rosenbaum bounds sensitivity tests for matched data.
-Version: 0.1
-Date: 2008-04-10
+Version: 0.2
+Date: 2009-01-28
 Author: Luke J. Keele
 Maintainer: Luke J. Keele <keele.4@osu.edu>
 Depends: R (>= 2.7.1), Matching (>= 4.6-2)
@@ -12,4 +12,4 @@ Description: Takes matched data and calculates Rosenbaum bounds
              and for data with multiple matched controls.  Is designed to
              work with the Matching package and operate on Match() objects.
 License: GPL (>= 2)
-Packaged: Wed Oct  1 08:05:37 2008; keele
+Packaged: Wed Jan 28 10:10:23 2009; Luke
