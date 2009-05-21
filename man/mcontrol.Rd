@@ -57,9 +57,9 @@ Y  <- lalonde$re78   #the outcome of interest
 Tr <- lalonde$treat #the treatment of interest
 
 #
-# Match
+# Match - without replacement
 #             
-mDW  <- Match(Y=Y, Tr=Tr, X=DWglm$fitted, M=2)
+mDW  <- Match(Y=Y, Tr=Tr, X=DWglm$fitted, M=2, replace=FALSE)
 
 #
 # One should check balance, but let's skip that step for now.

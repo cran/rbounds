@@ -6,10 +6,9 @@ binarysens <- function(x, y=NULL, Gamma=6, GammaInc=1)
   		}
   	else
   	{
-		ctrl <- sum(Y[x$index.control])
-        trt <- sum(Y[x$index.treated])
+		ctrl <- sum(x$mdata$Y[x$mdata$Tr==0])
+        trt <- sum(x$mdata$Y[x$mdata$Tr==1])
     }
-
   gamma <- seq(1, Gamma, by=GammaInc)
   mx <- ctrl + trt
   up <- c()

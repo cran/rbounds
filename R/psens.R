@@ -5,11 +5,11 @@ psens <- function(x,y=NULL, Gamma=6, GammaInc=1){
   trt <- x
   ctrl <- y
   } else if(x$est > 0){
-  ctrl <- Y[x$index.control]
-  trt <- Y[x$index.treated]
+  ctrl <-x$mdata$Y[x$mdata$Tr==0]
+  trt <-x$mdata$Y[x$mdata$Tr==1]
 	} else {
-	ctrl <- Y[x$index.treated]
-    trt <- Y[x$index.control]	
+	ctrl <- x$mdata$Y[x$mdata$Tr==1]
+    trt <- x$mdata$Y[x$mdata$Tr==0]	
 		}
 
   gamma <- seq(1, Gamma, by=GammaInc)

@@ -60,9 +60,9 @@ Y <- GerberGreenImai$VOTED98
 X <- fitted(pscore.glm)
 
 #
-# Match
+# Match - without replacement
 #
-m.obj <- Match(Y = Y, Tr = D, X = X, M = 1)
+m.obj <- Match(Y = Y, Tr = D, X = X, M = 1, replace=FALSE)
 summary(m.obj)
 
 #

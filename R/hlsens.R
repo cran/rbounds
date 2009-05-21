@@ -7,8 +7,8 @@ hlsens <- function(x, y=NULL, pr=.1, Gamma=6, GammaInc=1)
   ctrl <- y
   }
   else {
-        ctrl <- Y[x$index.control]
-        trt <- Y[x$index.treated]
+        ctrl <- x$mdata$Y[x$mdata$Tr==0]
+        trt <- x$mdata$Y[x$mdata$Tr==1]
       }
       
         gamma <- seq(1, Gamma, by=GammaInc)
