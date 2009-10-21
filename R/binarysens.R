@@ -6,14 +6,24 @@ binarysens <- function(x, y=NULL, Gamma=6, GammaInc=1)
   		}
   	else
   	{
-		ctrl <- sum(x$mdata$Y[x$mdata$Tr==0])
-        trt <- sum(x$mdata$Y[x$mdata$Tr==1])
+		y.c <- x$mdata$Y[x$mdata$Tr==0]
+        y.t <- x$mdata$Y[x$mdata$Tr==1]
+        table(y.t, y.c)
+        y.tmp1 <- table(y.t, y.c)[2]
+		y.tmp2 <- table(y.t, y.c)[3]
+		if(y.tmp1 >= y.tmp2){
+			trt <- y.tmp1
+			ctrl <- y.tmp2
+			} else {
+			trt <- y.tmp2
+			ctrl <- y.tmp1
+			}
     }
   gamma <- seq(1, Gamma, by=GammaInc)
   mx <- ctrl + trt
   up <- c()
   lo <- c()
-  series <- seq(trt,mx, by=1)
+  series <- seq(trt, mx, by=1)
   n.it <- length(gamma)
   for(i in 1:n.it)
     {
@@ -32,5 +42,4 @@ binarysens <- function(x, y=NULL, Gamma=6, GammaInc=1)
   cat("\n")
   cat("Note: Gamma is Log Odds of Differential Assignment To Treatment Due To Unobserved Factors \n")
 } #end of binary.sens function
-
 

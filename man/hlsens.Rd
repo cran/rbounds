@@ -1,6 +1,6 @@
 \name{hlsens} 
 \alias{hlsens} 
-\title{Demostration Autocorrelation Function} 
+\title{Rosenbaum Bounds for Hodges-Lehmann Point Estimate} 
 \description{ 
 Function to calculate Rosenbaum bounds for continuous or ordinal outcomes based on Hodges-Lehmann point estimate. 
 } 

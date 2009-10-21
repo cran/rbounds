@@ -33,7 +33,7 @@ binarysens(x,y, Gamma=6, GammaInc=1)
 #
 # Sensitivity Test
 #
-binarysens(12,100)
+binarysens(12,110)
 
 #
 # Example Using Match()
