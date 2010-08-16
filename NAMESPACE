@@ -1,0 +1,10 @@
+import(lattice)
+
+export(binarysens, data.prep, hlsens, mcontrol,
+       iv_sens, psens, iv_pval, iv_gssearch, maim_dist)
+
+S3method(plot, ivsens)
+S3method(print, ivsens)
+S3method(print, rbounds)
+S3method(summary, ivsens)
+S3method(summary, rbounds)

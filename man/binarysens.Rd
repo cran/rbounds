@@ -11,8 +11,8 @@ Function to calculate Rosenbaum bounds for binary data.
 binarysens(x,y, Gamma=6, GammaInc=1)
 } 
 \arguments{ 
-\item{x}{Number of successes in control group.} 
-\item{y}{Number of successes in treatment group.} 
+\item{x}{Count of the first set of discrepant pairs in a table of treated and control outcomes.} 
+\item{y}{Count of the second set of discrepant pairs in a table of treated and control outcomes.} 
 \item{Gamma}{Upper-bound on gamma parameter.} 
 \item{GammaInc}{To set user specified increments for gamma parameter. } 
 } 
@@ -28,8 +28,8 @@ binarysens(x,y, Gamma=6, GammaInc=1)
 #
 # Example From Rosenbaum Observational Studies Pg 112
 # Success: Died From Lung Cancer
-# 110 Treated Successes
-# 12 Control Successes
+# 110 Discrepant Pairs
+# 12 Discrepant Pairs
 #
 # Sensitivity Test
 #
