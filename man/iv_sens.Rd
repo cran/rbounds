@@ -1,65 +1,41 @@
 \name{iv_sens}
 \alias{iv_sens}
-\alias{iv_gssearch}
-\alias{iv_pval}
-\alias{maim_dist}
-\alias{plot.ivsens}
-\alias{print.ivsens}
-\alias{summary.ivsens}
 
-\title{Non-parametric Instrumental Variable Sensitivity Analysis for
-  Causal Inference}
+\title{
+Function to calculate Rosenbaum bounds for IV Estimator based on Wilcoxon sign rank test. 
+}
 
 \description{\code{iv_sens} performs a non-parametric, instrumental
   variable sensitivity analysis on matched pairs following the logic of
   the Neyman-Rubin framework for causal inference. The function supports
   a variable-valued instrument.}
 
-\usage{iv_sens(Rt, Rc, Dt, Dc, Zt = rep(1, length(Rt)), Zc = rep(0,
-       length(Rt)), b = 0, alpha = 0.025, Beta = 2, BetaInc = 0.01)}
+\usage{iv_sens(Rt, Rc, Dt, Dc, Gamma = 6, GammaInc = 1)}
 
 \arguments{  
   \item{Rt,Rc}{Vectors of observed response outcomes for matched
     treatment and control observations, respectively.}
 
-  \item{Dt,Dc}{Vectors of observed doses for matched treatment and
-    control observations, respectively.}
-  
-  \item{Zt,Zc}{Vectors of instrumental variables for matched treatment
-    and control observations, respectively. Defaults to \code{Zt = 1}
-    and \code{Zc = 0}, though variable values are supported.}
+  \item{Dt,Dc}{Vectors of observed doses for matched observations, respectively.
+  This is level of dose encouraged by the instrument.}
 
-  \item{b}{Default value is 0.}
+\item{Gamma}{Upper-bound on gamma parameter.} 
 
-  \item{alpha}{Confidence level defining the boundary of the sensitivity
-    analysis. Default value is \code{alpha = 0.025}.}
-  
-  \item{Beta}{An integer defining the range over which to calculate the
-    sensitivity. The lower and upper bounds will be defined internally
-    as \code{[-abs(Beta), abs(Beta)]}.}
-  
-  \item{BetaInc}{A floating point value indicating the values in
-    \code{[-abs(Beta), abs(Beta)]} for which a \emph{p}-value will be
-    calculated. The default is 0.01. Decreasing \code{BetaInc} will
-    increase the accuracy of the resulting confidence interval but will
-    also increase the calulation time.}
+\item{GammaInc}{To set user specified increments for gamma parameter.} 
 }
 
-\details{Given matched pairs of observations, where the instrument for
-  dose \code{D}, \code{Z}, defines the treated and control units, this
-  function performs a non-parametric sensitivity analysis. \code{iv_pval},
-  \code{iv_gssearch}, and \code{maim_dist} are functions used internally
-  by \code{iv_sens}.}
+\details{Given matched pairs of observations on an instrument \code{Z}, 
+ which encourages dose \code{D}, this function performs a Rosenbaum's bounds sensitivity analysis. Note   that matching is done on levels of the instrument. See example below.}
 
-\value{Returns an object of class \code{ivsens}.}
+\value{Returns an object of class \code{rbounds}.}
 
 \references{
   Angrist, Joshua D., Imbens, Guido W., and Rubin, Donald B. (1996).
-  "Identification of Causal Effects Using Instrumental Variables",
+  "Identification of Causal Effects Using Instrumental Variables."
   \emph{Journal of the American Statistical Association} 91/434, pp.
   444--455.
 
-  Rosenbaum, Paul R. (1996). "Comment", \emph{Journal of the American 
+  Rosenbaum, Paul R. (1996). "Comment." \emph{Journal of the American 
   Statistical Association} 91/434, pp. 465--468.
 
   Rosenbaum, Paul R. (2002). \emph{Observational Studies}.
@@ -70,35 +46,35 @@
 }
 
 \author{
-  Luke Keele, Ohio State University, \email{keele.4@osu.edu}
+  Luke Keele, Penn State University, \email{ljk20@psu.edu}
   
   Jason W. Morgan, Ohio State University, \email{morgan.746@osu.edu}
 }
 
-\seealso{
-  Also see \code{\link{plot.ivsens}}.
-}
+\seealso{See also \code{\link{data.prep}}, \code{\link{binarysens}},  \code{\link{hlsens}}, \code{\link[Matching]{Match}}, \code{\link{mcontrol}}}
 
 \examples{
 ## Example from Rosenbaum (2010, ch. 5).
 
 data(AngristLavy)
-Trt  <- subset(AngristLavy, z == 0) 
-Ctrl <- subset(AngristLavy, z == 1)
 
-## Set treatment and control groups.
-Rt1 <- Trt$avgmath
-Rt2 <- Trt$avgverb
-Dt  <- Trt$clasz
-Rc1 <- Ctrl$avgmath
-Rc2 <- Ctrl$avgverb
-Dc  <- Ctrl$clasz
+#Match on Economic Status Across Levels of the Instrument
+rr <- Match(Y=AngristLavy$avgmath, Tr=AngristLavy$z, X=AngristLavy$pct_disadv, 
+estimand ="ATC", M=2,  replace=FALSE)
 
-## Estimates.
-(Math <- iv_sens(Rt1, Rc1, Dt, Dc, Beta = 1, BetaInc = .001))
-(Verb <- iv_sens(Rt2, Rc2, Dt, Dc, Beta = 1, BetaInc = .001))
+#ITT Estimate
+summary(rr)
 
-## Plot.
-plot(Math)
-plot(Verb)
+#Extract Matched Outome Data
+ctrl <- AngristLavy$avgmath[rr$index.control]
+trt <- AngristLavy$avgmath[rr$index.treated]
+
+#Extract Matched Doses
+#Doses Encouraged By Instrument - Here Class Size
+csize.trt <- AngristLavy$classize[rr$index.treated]
+csize.ctrl <- AngristLavy$classize[rr$index.control]
+
+#Run Sensitivity Analsyis
+iv_sens(trt, ctrl, csize.trt, csize.ctrl, Gamma=2, GammaInc=.1)
+
 }

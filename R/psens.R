@@ -6,7 +6,7 @@ psens <- function(x, y = NULL, Gamma = 6, GammaInc = 1){
   }
   else if(x$est > 0){
     ctrl <-x$mdata$Y[x$mdata$Tr==0]
-    trt <-x$mdata$Y[x$mdata$Tr==1]
+    trt <- x$mdata$Y[x$mdata$Tr==1]
   } else {
     ctrl <- x$mdata$Y[x$mdata$Tr==1]
     trt <- x$mdata$Y[x$mdata$Tr==0]	

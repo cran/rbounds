@@ -29,7 +29,7 @@ hlsens(x, y = NULL, pr = 0.1, Gamma = 6, GammaInc = 1)
 \references{Rosenbaum, Paul R. (2002) \emph{Observational Studies}.
   Springer-Verlag.} 
 
-\author{Luke Keele, Ohio State University, \email{keele.4@osu.edu}}
+\author{Luke Keele, Penn State University, \email{ljk20@psu.edu}}
  
 \seealso{See also \code{\link{data.prep}}, \code{\link{binarysens}},
   \code{\link{psens}}, \code{\link[Matching]{Match}},
