@@ -3,7 +3,7 @@
 
 \name{binarysens} 
 \alias{binarysens} 
-\title{Binary Sensitivity Test} 
+\title{Sensitivity Test for Matched Binary Outcome} 
 \description{ 
 Function to calculate Rosenbaum bounds for binary data. 
 } 

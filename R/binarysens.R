@@ -28,8 +28,8 @@ binarysens <- function(x, y=NULL, Gamma=6, GammaInc=1) {
   for(i in 1:n.it) {
     p.plus <- gamma[i]/(1 + gamma[i])
     p.minus <- 1/(1 + gamma[i])
-    up.tmp <- sum(dbinom(series, mx, p=p.plus))
-    lo.tmp <- sum(dbinom(series, mx, p=p.minus))
+    up.tmp <- sum(dbinom(series, mx, prob=p.plus))
+    lo.tmp <- sum(dbinom(series, mx, prob=p.minus))
     up <- c(up, up.tmp)
     lo <- c(lo, lo.tmp)
   }

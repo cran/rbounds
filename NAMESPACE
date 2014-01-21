@@ -1,6 +1,7 @@
+importFrom(Matching, Match)
 
-export(binarysens, data.prep, hlsens, mcontrol,
-       iv_sens, psens)
+export(binarysens, data.prep, hlsens, mcontrol, iv_sens, psens, FisherSens,
+       SumTestSens)
 
 S3method(print, rbounds)
 S3method(summary, rbounds)

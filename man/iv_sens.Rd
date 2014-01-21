@@ -62,9 +62,6 @@ data(AngristLavy)
 rr <- Match(Y=AngristLavy$avgmath, Tr=AngristLavy$z, X=AngristLavy$pct_disadv, 
 estimand ="ATC", M=2,  replace=FALSE)
 
-#ITT Estimate
-summary(rr)
-
 #Extract Matched Outome Data
 ctrl <- AngristLavy$avgmath[rr$index.control]
 trt <- AngristLavy$avgmath[rr$index.treated]
