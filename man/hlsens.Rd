@@ -69,5 +69,5 @@ mDW  <- Match(Y=Y, Tr=Tr, X=DWglm$fitted, replace=FALSE)
 # One should check balance, but let's skip that step for now.
 
 # Sensitivity Test:
-hlsens(mDW, pr=.1, Gamma=2, GammaInc=.1)
+hlsens(mDW, pr=.1, Gamma=1.5, GammaInc=.25)
 }

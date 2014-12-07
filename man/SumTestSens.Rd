@@ -85,14 +85,14 @@ Since `SumTestSens' calculates through enumeration the exact expectation and var
   ## formulas for the mean and variance of T, the p-values it
   ## calculates do not precisely match those in Rosenbaum (2002).
 
-  testOut35 <- SumTestSens(T = T_test,
-                           q = q_test,
-                           n = n_test,
-                           m = m_test,
-                           Gamma = 35)
-  ## > Rosenbaum's value: 0.0179
-
-  ## Apply to vector
-  sapply(c(1, 5, 20, 35), SumTestSens,
+  #A single Gamma value - example not run
+  #testOut2 <- SumTestSens(T = T_test,
+  #                         q = q_test,
+  #                         n = n_test,
+  #                         m = m_test,
+  #                         Gamma = 35)
+ 
+  ## Apply to vector of Gamma values
+  sapply(c(1, 5, 35), SumTestSens,
          T = T_test, q = q_test, n = n_test, m = m_test) 
 }

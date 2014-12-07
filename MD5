@@ -1,10 +1,10 @@
-02e445c7dc2f6a7b246203f244dac255 *DESCRIPTION
+02a4e6795e1cb66a80e499cb81ac971e *DESCRIPTION
 9d356a4e8546d930873236b4d44e95b7 *NAMESPACE
 6fe53ae12811bbcea2534206dedd5461 *R/FisherSens.R
 5f4d0918eca64b28aab3d2007ecb6942 *R/SumTestSens.R
 b7f134f844b0d7c4f36b2956d12cbd4d *R/binarysens.R
 2b1d18cd488dac8db4054343ff602f42 *R/data.prep.R
-26b38ecae8ac4e8daeb335c2c9c75534 *R/hlsens.R
+b0937ef640be34541196b2258416a818 *R/hlsens.R
 dcfde1d871423c69af0c833170c1b4e5 *R/iv_sens.R
 c2859783d931a05ad650f95f502b7c3b *R/mcontrol.R
 715a12b8467b91c815f9d90070fa4b3a *R/print.rbounds.R
@@ -12,10 +12,10 @@ c2859783d931a05ad650f95f502b7c3b *R/mcontrol.R
 94d3820b67adc8c9e8c255b1a922e569 *data/AngristLavy.RData
 9164687e23a044626b2349448a51f12b *man/AngristLavy.Rd
 57d032d3aa9dd81b6e3e7b004afdec0c *man/FisherSens.Rd
-8a743ab874b51f237da7580b50c8930d *man/SumTestSens.Rd
+3498df0595348abd4c05fd693a83f62f *man/SumTestSens.Rd
 f2610d2d1664b1b02f23d66538ef5258 *man/binarysens.Rd
 191f045afd294b4431558571b304808c *man/data.prep.Rd
-4cf0498e0da6e2eda5a1a8a33c49a816 *man/hlsens.Rd
+4b70263ebd32f6d04a75b16aec3db432 *man/hlsens.Rd
 71eb168f5370ca19839c9c452aed6028 *man/iv_sens.Rd
 d4370b639dc25b6daf32c0e423b6d198 *man/mcontrol.Rd
 6658868331ee2db3b95cb1834d22ca8d *man/print.rbounds.Rd
