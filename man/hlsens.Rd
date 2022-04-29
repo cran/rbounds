@@ -8,14 +8,12 @@
 
 \usage{
 # Default Method 
-hlsens(x, y = NULL, pr = 0.1, Gamma = 6, GammaInc = 1)
+hlsens(x, y, pr = 0.1, Gamma = 6, GammaInc = 1)
 } 
 
 \arguments{
-  \item{x}{Treatment group outcomes in same order as treatment group
-    outcomes or an objects from Match().} 
-  \item{y}{Control group outcomes in same order as treatment group
-    outcomes unnecessary when using Match() object.} 
+  \item{x}{Treatment group outcomes in same order as treatment group.} 
+  \item{y}{Control group outcomes in same order as treatment group.} 
   \item{pr}{Search precision parameter.} 
   \item{Gamma}{Upper-bound on gamma parameter.} 
   \item{GammaInc}{To set user specified increments for gamma parameter.} 
@@ -29,10 +27,10 @@ hlsens(x, y = NULL, pr = 0.1, Gamma = 6, GammaInc = 1)
 \references{Rosenbaum, Paul R. (2002) \emph{Observational Studies}.
   Springer-Verlag.} 
 
-\author{Luke Keele, Penn State University, \email{ljk20@psu.edu}}
+\author{Luke Keele, University of Pennsylvania, \email{luke.keele@gmail.com}}
  
-\seealso{See also \code{\link{data.prep}}, \code{\link{binarysens}},
-  \code{\link{psens}}, \code{\link[Matching]{Match}},
+\seealso{See also \code{\link{binarysens}},
+  \code{\link{psens}},
   \code{\link{mcontrol}}
 }
 
@@ -49,25 +47,4 @@ ctrl <- c(16, 18, 18, 24, 19, 11, 10, 15, 16, 18, 18, 13, 19, 10, 16,
 16, 24, 13, 9, 14, 21, 19, 7, 18, 19, 12, 11, 22, 25, 16, 13, 11, 13)
 
 hlsens(trt, ctrl)
-
-# Load Matching Software and Data
-library(Matching)
-data(lalonde)
-
-# Estimate Propensity Score
-DWglm <- glm(treat~age + I(age^2) + educ + I(educ^2) + black + hisp +
-             married + nodegr + re74 + I(re74^2) + re75 + I(re75^2) +
-             u74 + u75, family=binomial, data=lalonde)
-
-# Save data objects
-Y  <- lalonde$re78   # the outcome of interest
-Tr <- lalonde$treat  # the treatment of interest
-
-# Match - without replacement
-mDW  <- Match(Y=Y, Tr=Tr, X=DWglm$fitted, replace=FALSE)
-
-# One should check balance, but let's skip that step for now.
-
-# Sensitivity Test:
-hlsens(mDW, pr=.1, Gamma=1.5, GammaInc=.25)
 }

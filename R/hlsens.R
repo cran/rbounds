@@ -1,13 +1,12 @@
-hlsens <- function (x, y = NULL, pr = 0.1, Gamma = 6, GammaInc = 1) 
-  {
-      if (is.numeric(x)) {
-          trt <- x
-          ctrl <- y
-      }
-      else {
-          trt <- x$mdata$Y[x$mdata$Tr == 1]
-          ctrl <- x$mdata$Y[x$mdata$Tr == 0]
-      }
+hlsens <- function (x, y, pr = 0.1, Gamma = 6, GammaInc = 1) {
+    dir <- mean(x) - mean(y)
+ if(dir > 0){
+    ctrl <- y
+    trt <- x
+    } else {
+    ctrl <- x
+    trt <- y	
+    }
       gamma <- seq(1, Gamma, by = GammaInc)
       k <- length(gamma)
       

@@ -36,35 +36,23 @@ is not the same for every treated unit.}
 \references{Rosenbaum, Paul R. (2002) \emph{Observational Studies}. 
   Springer-Verlag.} 
 
-\author{Luke Keele, Penn State University, \email{ljk20@psu.edu} }
+\author{Luke Keele, University of Pennsylvania, \email{luke.keele@gmail.com}}
  
-\seealso{See also \code{\link{data.prep}}, \code{\link{binarysens}},
-  \code{\link{psens}}, \code{\link[Matching]{Match}},
+\seealso{See also \code{\link{binarysens}}, \code{\link{psens}}, 
   \code{\link{hlsens}}}
 
 \examples{ 
 
-# Load Matching Software and Data
-library(Matching)
-data(lalonde)
+grp <- c(1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 
+         6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9, 10,10,10,11,
+         11,11,12,12,12)
+trt <- rep(c(1,0,0), 12)
+score <- c(-11.39,-8.45, -19.57,-8.33, 3.06, -19.93,-18.73,-11.99,-7.55, 
+            11.94, 9.4, -25.16,-0.77, -10.46,-7.27, 24.03, -8.23, 2.67,  
+            -4.04, -6.67, -1.12, -14.4, -26.21,5, -1.7, -15.3, -7.73, 
+            -0.87, -19.71,-12.69, -3.36, -11.21,-35.83,5.89, -10.79,2)
 
-# Estimate Propensity Score
-DWglm <- glm(treat~age + I(age^2) + educ + I(educ^2) + black + hisp +
-             married + nodegr + re74 + I(re74^2) + re75 + I(re75^2) +
-             u74 + u75, family=binomial, data=lalonde)
 
-# Save data objects
-Y  <- lalonde$re78   # the outcome of interest
-Tr <- lalonde$treat  # the treatment of interest
+mcontrol(score, grp, trt, group.size=3)
 
-# Match - without replacement
-mDW  <- Match(Y=Y, Tr=Tr, X=DWglm$fitted, M=2, replace=FALSE)
-
-# One should check balance, but let's skip that step for now.
-
-# Create Data Object:
-tmp <- data.prep(mDW, group.size=3)
-
-# Sensitivity Test
-mcontrol(tmp$Y, tmp$id, tmp$treat, group.size=3)
 } 

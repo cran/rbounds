@@ -7,12 +7,6 @@ FisherSens <- function(totalN,
   ## Created by Devin Caughey on 1 March 2010
   ## Last modified: 4 December 2010
   ##
-  ## This function performs a sensitivity analysis for Fisher's Exact Test
-  ## for count (binary) data. It is derived from Section 4.4 of Paul
-  ## Rosenbaum’s ``Observational Studies" (2nd Ed., 2002). The test is
-  ## one-sided; that is, the alternative hypothesis to the null is
-  ## that the number of "successes" (however defined) greater in among
-  ## the "treated" (however defined).
   ##
   ## It takes five arguments:
   ##   'totalN': total number of observations

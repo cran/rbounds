@@ -27,8 +27,8 @@ Devin Caughey, MIT, \email{caughey@mit.edu}
 Since `SumTestSens' calculates through enumeration the exact expectation and variance of the test under the null, it is very computationally intensive and may be unworkable for even medium-sized datasets.
 }
 
-\seealso{See also \code{\link{data.prep}}, \code{\link{binarysens}},
-  \code{\link{hlsens}}, \code{\link[Matching]{Match}},
+\seealso{See also \code{\link{binarysens}},
+  \code{\link{hlsens}},
   \code{\link{mcontrol}}
 }
 

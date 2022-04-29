@@ -25,7 +25,7 @@ Function to calculate Rosenbaum bounds for IV Estimator based on Wilcoxon sign r
 }
 
 \details{Given matched pairs of observations on an instrument \code{Z}, 
- which encourages dose \code{D}, this function performs a Rosenbaum's bounds sensitivity analysis. Note   that matching is done on levels of the instrument. See example below.}
+ which encourages dose \code{D}, this function performs a Rosenbaum's bounds sensitivity analysis. Note  that matching is done on levels of the instrument.}
 
 \value{Returns an object of class \code{rbounds}.}
 
@@ -45,33 +45,28 @@ Function to calculate Rosenbaum bounds for IV Estimator based on Wilcoxon sign r
   Springer-Verlag.
 }
 
-\author{
-  Luke Keele, Penn State University, \email{ljk20@psu.edu}
+\author{Luke Keele, University of Pennsylvania, \email{luke.keele@gmail.com}}
   
-  Jason W. Morgan, Ohio State University, \email{morgan.746@osu.edu}
-}
-
-\seealso{See also \code{\link{data.prep}}, \code{\link{binarysens}},  \code{\link{hlsens}}, \code{\link[Matching]{Match}}, \code{\link{mcontrol}}}
+\seealso{See also \code{\link{binarysens}},  \code{\link{hlsens}}, \code{\link{mcontrol}}}
 
 \examples{
-## Example from Rosenbaum (2010, ch. 5).
 
-data(AngristLavy)
+data(angristlavy)
 
-#Match on Economic Status Across Levels of the Instrument
-rr <- Match(Y=AngristLavy$avgmath, Tr=AngristLavy$z, X=AngristLavy$pct_disadv, 
-estimand ="ATC", M=2,  replace=FALSE)
-
+# Example from Ch 5 of Design of Observational Studies
+	
 #Extract Matched Outome Data
-ctrl <- AngristLavy$avgmath[rr$index.control]
-trt <- AngristLavy$avgmath[rr$index.treated]
+Rt <- angristlavy$avgmath[angristlavy$z==1]
+Rc <- angristlavy$avgmath[angristlavy$z==0]
 
 #Extract Matched Doses
 #Doses Encouraged By Instrument - Here Class Size
-csize.trt <- AngristLavy$classize[rr$index.treated]
-csize.ctrl <- AngristLavy$classize[rr$index.control]
+Dt <- angristlavy$clasz[angristlavy$z==1]
+Dc <- angristlavy$clasz[angristlavy$z==0]
 
-#Run Sensitivity Analsyis
-iv_sens(trt, ctrl, csize.trt, csize.ctrl, Gamma=2, GammaInc=.1)
+
+#Run Sensitivity Analsyis - Rank Sum Test
+iv_sens(Rc, Rt, Dc, Dt, Gamma=1.5, GammaInc=.01)
+
 
 }

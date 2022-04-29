@@ -1,25 +1,23 @@
-\name{AngristLavy}
+\name{angristlavy}
 \docType{data}
-\alias{AngristLavy}
+\alias{angristlavy}
 \title{Angrist and Lavy (1999) Maimonides' Rule Data Set}
 
 \description{
   Angrist and Lavy (1999) data set used by Rosenbaum (2010) to
   demonstrate his instrumental variable sensitivity analysis.
 }
-\usage{AngristLavy}
-\format{A \code{data.frame} with 318 observations on the following 5 variables).
+\usage{data(angristlavy)}
+\format{A \code{data.frame} with 172 observations on the following variables).
 
-enrollment: Enrolled number of students in each cohort
-
-pct_disadv: Percentage of students that are economically disadvantaged.
-
-classsize: Size of class or classes for each cohort.
+clasz: Size of class or classes for each cohort.
 
 avgmath: Average math test score for each class.
 
 z: A recode of enrollment with 1 indicating a cohort with 41 or more students, i.e. two classes. 
 This serves as the instrument which encourages smaller classes.
+
+pair: matched pair id
 
 }
   

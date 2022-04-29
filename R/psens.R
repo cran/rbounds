@@ -1,17 +1,8 @@
-psens <- function(x, y = NULL, Gamma = 6, GammaInc = 1){
+psens <- function(x, y, Gamma = 6, GammaInc = 1){
   
-  if (class(x)!="Match") {
     trt <- x
     ctrl <- y
-  }
-  else if(x$est > 0){
-    ctrl <-x$mdata$Y[x$mdata$Tr==0]
-    trt <- x$mdata$Y[x$mdata$Tr==1]
-  } else {
-    ctrl <- x$mdata$Y[x$mdata$Tr==1]
-    trt <- x$mdata$Y[x$mdata$Tr==0]	
-  }
-  
+ 
   gamma <- seq(1, Gamma, by=GammaInc)
   m <- length(gamma)
   pvals <- matrix(NA, m, 2)

@@ -1,7 +1,8 @@
-importFrom(Matching, Match)
 
-export(binarysens, data.prep, hlsens, mcontrol, iv_sens, psens, FisherSens,
+export(binarysens, hlsens, mcontrol, iv_sens, psens, FisherSens,
        SumTestSens)
+
+importFrom("stats", "pbinom", "pnorm", "wilcox.test")
 
 S3method(print, rbounds)
 S3method(summary, rbounds)

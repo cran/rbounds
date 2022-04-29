@@ -19,13 +19,13 @@ FisherSens(totalN, treatedN, totalSuccesses, treatedSuccesses, Gammas)
 \value{
 Returns a matrix with three columns and number of rows equal to the length of "Gammas". Each row indicates the upper and lower bounds for the (one-sided) p-value for a given value of Gamma.
 }
-\references{Paul R. Rosenbaum. Observational Studies. Springer, New York, 2nd edition, 2002, sec. 4.4}
+
 \author{
 Devin Caughey, MIT, \email{caughey@mit.edu}
 }
 
-\seealso{See also \code{\link{data.prep}}, \code{\link{binarysens}},
-  \code{\link{hlsens}}, \code{\link[Matching]{Match}},
+\seealso{See also \code{\link{binarysens}},
+  \code{\link{hlsens}},
   \code{\link{mcontrol}}
 }
 
